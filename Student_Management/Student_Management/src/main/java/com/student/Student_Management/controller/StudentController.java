@@ -20,7 +20,7 @@ import com.student.Student_Management.dao.StudentDao;
 import com.student.Student_Management.entity.Student;
 
 
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/api/v1/")
 public class StudentController {
@@ -37,25 +37,25 @@ public class StudentController {
 		return this.studentDao.getAllStudents();
 	}
 	
-	@PostMapping("/student/")
+	@PostMapping("/students")
 	public Student addStudent(@RequestBody Student student)
 	{
 		return this.studentDao.addStudents(student);
 	}
 	
-	@GetMapping("/student/{id}")
+	@GetMapping("/students/{id}")
 	public ResponseEntity<Student> getStudentByRoll(@PathVariable long id)
 	{
 		return  this.studentDao.getStudentByRoll(id);
 	}
 	
-	@PutMapping("/student/{roll}")
+	@PutMapping("/students/{roll}")
 	public ResponseEntity<Student> updateDetails(@RequestBody Student student,@PathVariable long roll )
 	{
 		return this.studentDao.updateDetails(student,roll);
 	}
 	
-	@DeleteMapping("/student/{roll}")
+	@DeleteMapping("/students/{roll}")
 	public String deleteStudent(@PathVariable long roll)
 	{
 		return studentDao.deleteStudent(roll);
